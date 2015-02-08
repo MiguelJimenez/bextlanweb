@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-02-2015 a las 13:47:55
+-- Tiempo de generación: 08-02-2015 a las 13:48:26
 -- Versión del servidor: 5.5.8
 -- Versión de PHP: 5.3.5
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `editorial` (
   `id_editorial` int(11) NOT NULL AUTO_INCREMENT,
   `editorial` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_editorial`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Volcar la base de datos para la tabla `editorial`
