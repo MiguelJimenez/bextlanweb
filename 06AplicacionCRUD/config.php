@@ -2,5 +2,5 @@
 define('SERVER', 'localhost');
 define('USER', 'root');
 define('PASS', '');
-define('DB', 'super_heroes');
+define('DB', 'super-heroes');
 ?>

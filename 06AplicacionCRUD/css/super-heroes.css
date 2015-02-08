@@ -36,3 +36,15 @@ img
 {
 	color: #EC673A;
 }
+
+.error, .exito
+{
+	background: red;
+	color: white;
+	padding: 1em;
+}
+
+.exito
+{
+	background: green;
+}
