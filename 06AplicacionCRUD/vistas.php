@@ -1,8 +1,32 @@
 <?php 
 require_once "conexion.php";
 
+function catalogoEditoriales()
+{
+	$editoriales = Array();
+
+	$mysql = conexionMySQL();
+	$sql = "SELECT * FROM editorial";
+
+	if($resultado = $mysql->query($sql))
+	{
+		while($fila = $resultado->fetch_assoc())
+		{
+			$editoriales[$fila['id_editorial']] = $fila['editorial'];
+		}
+		$resultado->free();
+	}
+	$mysql->close();
+
+	return $editoriales;
+	// print_r($editoriales);
+
+}
+ // catalogoEditoriales();
+
 function mostrarHeroes()
 {
+	$editorial = catalogoEditoriales();
 	$mysql = conexionMySQL();	
 	$sql = "SELECT * FROM heroes ORDER BY id_heroe DESC";
 
@@ -34,7 +58,7 @@ function mostrarHeroes()
 				$tabla.= "<td><h2>".$fila['nombre']."</h2></td>";
 				$tabla.= "<td><img src='img/".$fila['imagen']."' /></td>";
 				$tabla.= "<td><p>".$fila['descripcion']."</p></td>";
-				$tabla.= "<td><h3>".$fila['editorial']."</h3></td>";
+				$tabla.= "<td><h3>".$editorial[$fila["editorial"]]."</h3></td>";
 				$tabla.= "<td>Botón editar</td>";
 				$tabla.= "<td>Botón eliminar</td>";
 				$tabla.= "</tr>";
