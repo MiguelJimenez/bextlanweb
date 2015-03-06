@@ -20,6 +20,8 @@ img
 	width: 15%;
 }
 
+#cabecera, #contenido, #precarga, #respuesta, .tabla td, .tabla th {padding: 1em;}
+
 #contenido
 {
 	background: white;
@@ -37,6 +39,8 @@ img
 	color: #EC673A;
 }
 
+#precarga, #respuesta {display: none;}
+
 .error, .exito
 {
 	background: red;
@@ -44,7 +48,26 @@ img
 	padding: 1em;
 }
 
-.exito
-{
-	background: green;
-}
+.exito{	background: green;}
+
+.formulario, .tabla p {text-align: left;}
+
+.formulario div {margin: 1em auto;}
+
+.formulario legend {font-size: 2em; font-weight: bold;}
+
+.tabla {margin: auto; width: 90%}
+
+.tabla a {color: #EEE;}
+
+.tabla a:hover {color: #292623;}
+
+.tabla img {max-width: 200px; height: 300px;}
+
+.tabla td {vertical-align: top;}
+
+.tabla th {background: #292623; color: #EEE;}
+
+.tabla tr:nth-child(odd) {background: #EC673A;}
+
+.tabla tr:nth-child(even) {background: #1C5F81;}
