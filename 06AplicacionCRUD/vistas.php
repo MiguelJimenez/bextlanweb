@@ -1,6 +1,62 @@
 <?php 
 require_once "conexion.php";
 
+function listaEditoriales()
+{
+	// Esta función generará el select de las editoriales
+	$mysql = conexionMySQL();
+	$sql = "SELECT * FROM editorial";
+
+	$resultado = $mysql->query($sql);
+
+	$lista = "<select id='editorial' name='editorial_slc' required>";
+
+		$lista .= "<option value=''>- - -</option>";
+		while ($fila = $resultado->fetch_assoc())
+		{
+			$lista .= "<option value='".$fila["id_editorial"]."'>".$fila["editorial"]."</option>";
+			// $lista .= $fila["id_editorial"]."-".$fila["editorial"];
+		}
+
+	$lista .= "</select>";
+
+	$resultado->free();
+	$mysql->close();
+
+	return $lista;
+}
+
+function altaHeroe()
+{
+	$form = "<form id='alta-heroe' class='formulario' data insertar>";
+		$form .= "<fieldset>";
+			$form .="<legend>Alta de Super Héroe:</legend>";
+			$form .="<div>";
+				$form .="<label for='nombre'>Nombre</label>";
+				$form .="<input type='text' id='nombre' name='nombre_txt' required>";
+			$form .="</div>";
+			$form .="<div>";
+				$form .="<label for='imagen'>Imagen:</label>";
+				$form .="<input type='text' id='imagen' name='imagen_txt' required>";
+			$form .="</div>";
+			$form .="<div>";
+				$form .="<label for='descripcion'>Descripción:</label>";
+				$form .="<textarea id='descripcion' name='descripcion_txa' required></textarea>";
+			$form .="</div>";
+			$form .="<div>";
+				$form .="<label for='editorial'>Editorial:</label>";
+				$form .=listaEditoriales();
+			$form .="</div>";
+			$form .="<div>";
+				$form .="<input type='submit' id='insertar-btn' name='insertar_btn' value='Insertar'>";
+				$form .= "<input type='hidden' id='transaccion' name='transaccion' value='insertar' />";
+			$form .="</div>";
+		$form .="</fieldset>";
+	$form .="</form>";
+
+	return printf($form);
+}
+
 function catalogoEditoriales()
 {
 	$editoriales = Array();

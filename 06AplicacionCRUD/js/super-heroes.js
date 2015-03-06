@@ -30,12 +30,21 @@ function enviarDatos()
 	{
 		if(ajax.status == OK)
 		{
-			alert('weeeeee');
+			precarga.innerHTML = null;	
+			precarga.style.display = "none"	;
+			respuesta.style.display = 'block';
+			respuesta.innerHTML = ajax.responseText;
+
+			if(ajax.responseText.indexOf("data-insertar")>-1)
+			{
+				document.querySelector("#alta-heroe").addEventListener("submit", insertarHeroe);
+			}
 		}
 		else
 		{
-			alert('nooo');
+			alert("El servidor no contestó\nError "+ajax.status+": "+ajax.statusText);
 		}
+		console.log(ajax);
 	}
 }
 
@@ -46,6 +55,11 @@ function ejecutarAJAX(datos)
 	ajax.open('POST', 'controlador.php');
 	ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	ajax.send(datos);
+}
+
+function insertarHeroe(evento)
+{
+	
 }
 
 function altaHeroe(evento)
