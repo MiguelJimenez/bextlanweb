@@ -59,7 +59,11 @@ function ejecutarAJAX(datos)
 
 function insertarHeroe(evento)
 {
-	
+	evento.preventDefault();
+
+	var nombre = new Array();
+	var valor = new Array();
+	var datos = "";
 }
 
 function altaHeroe(evento)
