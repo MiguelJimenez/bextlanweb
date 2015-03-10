@@ -28,7 +28,7 @@ function listaEditoriales()
 
 function altaHeroe()
 {
-	$form = "<form id='alta-heroe' class='formulario' data insertar>";
+	$form = "<form id='alta-heroe' class='formulario' data-insertar>";
 		$form .= "<fieldset>";
 			$form .="<legend>Alta de Super Héroe:</legend>";
 			$form .="<div>";
@@ -119,7 +119,7 @@ function mostrarHeroes()
 				$tabla.= "<td>Botón eliminar</td>";
 				$tabla.= "</tr>";
 			}
-			$resultado->free(); // Para liberara memoria una vez mostrados los datos
+			$resultado->free(); // Para liberar memoria una vez mostrados los datos
 			$tabla.= "</tbody>";
 			$tabla.= "</table>";
 

@@ -30,21 +30,28 @@ function enviarDatos()
 	{
 		if(ajax.status == OK)
 		{
-			precarga.innerHTML = null;	
-			precarga.style.display = "none"	;
-			respuesta.style.display = 'block';
+			precarga.innerHTML = null;	// Para quitar la imagen de la precarga
+			precarga.style.display = "none"	; // Para ocultar el div.
+			respuesta.style.display = 'block'; // Para mostrar el div respuesta
 			respuesta.innerHTML = ajax.responseText;
 
 			if(ajax.responseText.indexOf("data-insertar")>-1)
 			{
 				document.querySelector("#alta-heroe").addEventListener("submit", insertarHeroe);
 			}
+
+			if(ajax.responseText.indexOf("data-recargar")>-1) // Si se ha insertado conrrectamente el registro
+			{
+				setTimeout(window.location.reload(),3000); // Para recargar la página pasados 3 segundos
+			}
+
 		}
 		else
 		{
 			alert("El servidor no contestó\nError "+ajax.status+": "+ajax.statusText);
 		}
-		console.log(ajax);
+		// alert('funciona');
+		// console.log(ajax);
 	}
 }
 
@@ -60,10 +67,25 @@ function ejecutarAJAX(datos)
 function insertarHeroe(evento)
 {
 	evento.preventDefault();
+	
+	// console.log(evento);
+	// console.log(evento.target);
+	// console.log(evento.target.length);
 
 	var nombre = new Array();
 	var valor = new Array();
+	var hijosForm = evento.target;
 	var datos = "";
+
+	for(var i=1; i<hijosForm.length; i++)
+	{
+		nombre[i] = hijosForm[i].name;
+		valor[i] = hijosForm[i].value;
+
+		datos += nombre[i]+"="+valor[i]+"&";
+		// console.log(datos);
+	}
+	ejecutarAJAX(datos);
 }
 
 function altaHeroe(evento)
