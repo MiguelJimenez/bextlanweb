@@ -6,6 +6,7 @@ var OK = 200;
 var ajax = null;
 var btnInsertar = document.querySelector("#insertar"); // Usar para id's
 var btnsEliminar = document.querySelectorAll('.eliminar'); // Para seleccionar todos los botones eliminar
+var btnsEditar = document.querySelectorAll('.editar');
 
 var precarga = document.querySelector("#precarga");
 var respuesta = document.querySelector("#respuesta");
@@ -110,7 +111,17 @@ function eliminarHeroe(evento)
 		var datos= "idHeroe="+idHeroe+"&transaccion=eliminar";
 		ejecutarAJAX(datos);
 	}	
+}
 
+function editarHeroe(evento)
+{
+	evento.preventDefault();
+	// alert(evento.target.dataset.id);
+
+	var idHeroe = evento.target.dataset.id;		
+	var datos= "idHeroe="+idHeroe+"&transaccion=editar";
+	
+	ejecutarAJAX(datos);
 }
 
 function alCargarDocumento()
@@ -120,6 +131,11 @@ function alCargarDocumento()
 	for(var i=0; i < btnsEliminar.length; i++)
 	{
 		btnsEliminar[i].addEventListener('click', eliminarHeroe);
+	}
+
+	for(var i=0; i < btnsEditar.length; i++)
+	{
+		btnsEditar[i].addEventListener('click', editarHeroe);
 	}
 }
 
