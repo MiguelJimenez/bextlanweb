@@ -4,7 +4,9 @@ var OK = 200;
 
 // Variables
 var ajax = null;
-var btnInsertar = document.querySelector("#insertar");
+var btnInsertar = document.querySelector("#insertar"); // Usar para id's
+var btnsEliminar = document.querySelectorAll('.eliminar'); // Para seleccionar todos los botones eliminar
+
 var precarga = document.querySelector("#precarga");
 var respuesta = document.querySelector("#respuesta");
 
@@ -96,9 +98,29 @@ function altaHeroe(evento)
 	ejecutarAJAX(datos);
 }
 
+function eliminarHeroe(evento)
+{
+	evento.preventDefault(); // Para prevenir el evento, evita que nos aparezca el '#' en la url al pulsar el link 'Eliminar'
+	// alert(evento.target.dataset.id); // evento.target es el objeto que origina el evento. dataset aqui hace referencia al data-id del 'Eliminar'
+	var idHeroe = evento.target.dataset.id;
+	var eliminar = confirm("¿Estás seguro de eliminar el SuperHéroe con el id: "+idHeroe+"?");
+
+	if(eliminar)
+	{
+		var datos= "idHeroe="+idHeroe+"&transaccion=eliminar";
+		ejecutarAJAX(datos);
+	}	
+
+}
+
 function alCargarDocumento()
 {
-	btnInsertar.addEventListener("click", altaHeroe)
+	btnInsertar.addEventListener("click", altaHeroe);
+
+	for(var i=0; i < btnsEliminar.length; i++)
+	{
+		btnsEliminar[i].addEventListener('click', eliminarHeroe);
+	}
 }
 
 // Eventos
