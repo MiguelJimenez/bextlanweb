@@ -13,7 +13,30 @@ require_once "conexion.php";
 function listaEditorialesEditada($id)
 {
 	// Esta función devuelve el nombre de la editorial del superheroe a editar
+	
+	$mysql = conexionMySQL();
+	$sql = "SELECT * FROM editorial";
+	$resultado = $mysql->query($sql);
+
+	$lista = "<select id='editorial' name='editorial_slc' required>";
+
+		$lista .= "<option value=''>- - -</option>";
+		while ($fila = $resultado->fetch_assoc())
+		{
+			$selected = ($id == $fila['id_editorial'])?'selected':'';
+			
+			$lista .= "<option value='".$fila["id_editorial"]."' $selected>".$fila["editorial"]."</option>";
+			
+		}
+
+	$lista .= "</select>";
+
+	$resultado->free();
+	$mysql->close();
+
+	return $lista;
 }
+
 
 function editarHeroe($idHeroe)
 {

@@ -40,7 +40,12 @@ function enviarDatos()
 
 			if(ajax.responseText.indexOf("data-insertar")>-1)
 			{
-				document.querySelector("#alta-heroe").addEventListener("submit", insertarHeroe);
+				document.querySelector("#alta-heroe").addEventListener("submit", insertarActualizarHeroe);
+			}
+
+			if(ajax.responseText.indexOf("data-editar")>-1)
+			{
+				document.querySelector("#editar-heroe").addEventListener("submit", insertarActualizarHeroe);
 			}
 
 			if(ajax.responseText.indexOf("data-recargar")>-1) // Si se ha insertado conrrectamente el registro
@@ -67,7 +72,8 @@ function ejecutarAJAX(datos)
 	ajax.send(datos);
 }
 
-function insertarHeroe(evento)
+// function insertarHeroe(evento) - LA MISMA FUNCION NOS SIRVER TANTO PARA INSERTAR COMO PARA ACTUALIZAR
+function insertarActualizarHeroe(evento)
 {
 	evento.preventDefault();
 	

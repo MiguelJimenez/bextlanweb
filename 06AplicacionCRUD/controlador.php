@@ -39,6 +39,8 @@ function ejecutarTransaccion($transaccion)
 	else if($transaccion == 'actualizar')
 	{
 		// Modificar en MySQL los datos del registro modificado
+		actualizarHeroe($_POST['idHeroe'], $_POST['nombre_txt'], $_POST['imagen_txt'], $_POST['descripcion_txa'], $_POST['editorial_slc']);
+		
 	}
 }
 
